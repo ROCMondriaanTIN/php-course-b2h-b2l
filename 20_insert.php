@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
             $alert = "Vul een geldig getal in";
         } else {
             global $db;
-            $query = $db->prepare("INSERT INTO fietsen (merk, type, prijs) VALUES (:brand, :type, :price)");
+            $query = $db->prepare("INSERT INTO fietsen (merk, type, prijs, categorie_id) VALUES (:brand, :type, :price, 1)");
             $query->bindParam('brand', $_POST['brand']);
             $query->bindParam('type', $_POST['type']);
             $query->bindParam('price', $price);
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Prijs</label>
-                    <input type="number" class="form-control" name="price" id="price" step="0.01">
+                    <input type="text" class="form-control" name="price" id="price" step="0.01">
                 </div>
                 <button class="btn btn-primary" name="submit">Submit</button>
             </form>
